@@ -1,7 +1,192 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><title>헬린이 상담소</title>
-<style>body{font-family:-apple-system,"Apple SD Gothic Neo",sans-serif;max-width:600px;margin:60px auto;padding:0 20px;line-height:1.7}a{color:#0E7350;display:block;margin:12px 0;font-size:16px}</style></head>
-<body><h1>헬린이 상담소</h1>
-<a href="./privacy.html">개인정보처리방침</a>
-<a href="./delete-account.html">계정·데이터 삭제 안내</a>
-</body></html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <script src="./image-slot.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; -webkit-font-smoothing: antialiased; }
+    ::-webkit-scrollbar { display: none; }
+    @keyframes hlFadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</helmet>
+
+<div style="font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', sans-serif; background: #F4F6F1; color: #14261F; min-height: 100dvh; overflow-x: hidden;">
+
+  <!-- NAV -->
+  <div style="position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px,4vw,48px); background: rgba(244,246,241,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(14,115,80,0.08);">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="width: 34px; height: 34px; border-radius: 10px; background: #0E7350; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="18" height="16" viewBox="0 0 24 22" fill="none"><path d="M2 4C2 2.34 3.34 1 5 1H19C20.66 1 22 2.34 22 4V13C22 14.66 20.66 16 19 16H9L4 20.5V16H5C3.34 16 2 14.66 2 13V4Z" fill="#FFFFFF"/></svg>
+      </div>
+      <span style="font-size: 17px; font-weight: 800; letter-spacing: -0.02em;">헬린이 상담소</span>
+    </div>
+    <a href="#download" style="text-decoration: none; background: #0E7350; color: #FFFFFF; font-size: 14px; font-weight: 700; padding: 10px 20px; border-radius: 999px; transition: transform 160ms cubic-bezier(0.23,1,0.32,1);" style-hover="transform: scale(1.04);" style-active="transform: scale(0.97);">다운로드</a>
+  </div>
+
+  <!-- HERO -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: clamp(40px,7vw,88px) clamp(20px,4vw,48px) clamp(48px,6vw,72px); display: flex; align-items: center; gap: clamp(32px,5vw,64px); flex-wrap: wrap;">
+    <div style="flex: 1 1 420px; animation: hlFadeUp 700ms cubic-bezier(0.23,1,0.32,1) both;">
+      <h1 style="font-size: clamp(2.1rem,4.6vw,3.1rem); line-height: 1.32; letter-spacing: -0.02em; font-weight: 800; margin: 0 0 18px; text-wrap: pretty; color: #0F2A20;">혼자 운동하다<br>막막했던 적 있나요?</h1>
+      <p style="font-size: clamp(1.05rem,1.8vw,1.3rem); font-weight: 700; color: #0E7350; margin: 0 0 14px;">헬린이를 위한 AI 헬스 상담소</p>
+      <p style="font-size: 16px; line-height: 1.7; color: #4B5A54; margin: 0 0 32px; max-width: 46ch;">궁금한 순간 바로 물어보세요. AI 코치와 선배 헬린이들이 답해드립니다.</p>
+      <a href="#download" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px; background: #101613; color: #FFFFFF; padding: 14px 24px; border-radius: 14px; transition: transform 160ms cubic-bezier(0.23,1,0.32,1);" style-hover="transform: scale(1.03);" style-active="transform: scale(0.97);">
+        <svg width="20" height="24" viewBox="0 0 384 512" fill="#FFFFFF"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span style="text-align: left; line-height: 1.2;"><span style="display: block; font-size: 10px; opacity: 0.85;">Download on the</span><span style="display: block; font-size: 17px; font-weight: 700;">App Store</span></span>
+      </a>
+    </div>
+    <div style="flex: 1 1 300px; display: flex; justify-content: center; animation: hlFadeUp 700ms cubic-bezier(0.23,1,0.32,1) 120ms both;">
+      <div style="width: 260px; background: #101613; border-radius: 44px; padding: 14px; box-shadow: 0 30px 60px -20px rgba(14,42,32,0.35);">
+        <div style="position: relative; background: #E8F3ED; border-radius: 32px; overflow: hidden; aspect-ratio: 9/19.5;">
+          <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 80px; height: 18px; background: #101613; border-radius: 10px; z-index: 2;"></div>
+          <image-slot id="hero-screenshot" shape="rect" placeholder="홈 화면 스크린샷" style="width: 100%; height: 100%;"></image-slot>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMS -->
+  <sc-if value="{{ showProblems }}" hint-placeholder-val="{{ true }}">
+  <div style="background: #E8F3ED;">
+    <div style="max-width: 760px; margin: 0 auto; padding: clamp(56px,8vw,88px) clamp(20px,4vw,48px);">
+      <h2 style="font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; text-align: center; margin: 0 0 40px; letter-spacing: -0.02em; color: #0F2A20;">이런 고민, 익숙하신가요?</h2>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 20px 4px; font-size: 16px; font-weight: 600; color: #24352D; box-shadow: 0 4px 16px -8px rgba(14,42,32,0.12);">오늘 무슨 운동을 해야 할지 모르겠어요</div>
+        <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 20px 4px; font-size: 16px; font-weight: 600; color: #24352D; box-shadow: 0 4px 16px -8px rgba(14,42,32,0.12);">이 자세가 맞는지 봐줄 사람이 없어요</div>
+        <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 20px 4px; font-size: 16px; font-weight: 600; color: #24352D; box-shadow: 0 4px 16px -8px rgba(14,42,32,0.12);">PT는 비싸고 부담스러워요</div>
+        <div style="align-self: flex-end; max-width: 82%; background: #0E7350; color: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 4px 20px; font-size: 16px; font-weight: 700; margin-top: 8px;">헬린이 상담소가 답해드릴게요</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- FEATURES -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px,8vw,96px) clamp(20px,4vw,48px);">
+    <h2 style="font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; text-align: center; margin: 0 0 44px; letter-spacing: -0.02em; color: #0F2A20;">헬린이 상담소가 도와드려요</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+      <div style="background: #FFFFFF; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(14,115,80,0.08);">
+        <div style="width: 48px; height: 48px; border-radius: 14px; background: #E8F3ED; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7350" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="4"/><circle cx="8.5" cy="12.5" r="1.4" fill="#0E7350" stroke="none"/><circle cx="15.5" cy="12.5" r="1.4" fill="#0E7350" stroke="none"/><path d="M12 6V3"/><circle cx="12" cy="2" r="1" fill="#0E7350" stroke="none"/></svg>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 8px; color: #0F2A20;">AI 코치</h3>
+        <p style="font-size: 15px; line-height: 1.7; color: #4B5A54; margin: 0;">24시간 언제든, 운동 질문에 바로 답해드려요.</p>
+      </div>
+      <div style="background: #FFFFFF; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(14,115,80,0.08);">
+        <div style="width: 48px; height: 48px; border-radius: 14px; background: #E8F3ED; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7350" stroke-width="1.8"><path d="M3 8C3 6.34 4.34 5 6 5H14C15.66 5 17 6.34 17 8V11C17 12.66 15.66 14 14 14H8L4.5 17V14H6C4.34 14 3 12.66 3 11V8Z"/><path d="M13 16.5C13 17.6 13.9 18.5 15 18.5H16.5L19.5 21V18.5H20C21.1 18.5 22 17.6 22 16.5V13.5C22 12.4 21.1 11.5 20 11.5H15" stroke-width="1.6"/></svg>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 8px; color: #0F2A20;">커뮤니티 Q&A</h3>
+        <p style="font-size: 15px; line-height: 1.7; color: #4B5A54; margin: 0;">멘토와 다른 헬린이들의 실전 경험을 들어보세요.</p>
+      </div>
+      <div style="background: #FFFFFF; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(14,115,80,0.08);">
+        <div style="width: 48px; height: 48px; border-radius: 14px; background: #E8F3ED; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7350" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9H21"/><path d="M8 2V6"/><path d="M16 2V6"/><path d="M7.5 13.5L10 16L16 10.5" stroke-width="2"/></svg>
+        </div>
+        <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 8px; color: #0F2A20;">운동 기록</h3>
+        <p style="font-size: 15px; line-height: 1.7; color: #4B5A54; margin: 0;">매일 기록하고 나의 성장 과정을 확인하세요.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREENSHOT GALLERY -->
+  <div style="background: #0F2A20; padding: clamp(56px,8vw,88px) 0;">
+    <h2 style="font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; text-align: center; margin: 0 0 40px; letter-spacing: -0.02em; color: #FFFFFF;">앱을 미리 만나보세요</h2>
+
+    <sc-if value="{{ isScrollGallery }}" hint-placeholder-val="{{ true }}">
+    <div style="display: flex; gap: 20px; overflow-x: auto; padding: 4px clamp(20px,4vw,48px) 12px; scroll-snap-type: x mandatory;">
+      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-1" shape="rect" placeholder="홈 화면" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-2" shape="rect" placeholder="AI 코치 채팅" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-3" shape="rect" placeholder="커뮤니티 Q&amp;A" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-4" shape="rect" placeholder="운동 기록" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isGridGallery }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+      <div style="background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-1b" shape="rect" placeholder="홈 화면" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+      <div style="background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-2b" shape="rect" placeholder="AI 코치 채팅" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+      <div style="background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-3b" shape="rect" placeholder="커뮤니티 Q&amp;A" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+      <div style="background: #101613; border-radius: 36px; padding: 12px;">
+        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-4b" shape="rect" placeholder="운동 기록" style="width: 100%; height: 100%;"></image-slot></div>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+
+  <!-- CTA -->
+  <div id="download" style="background: #0E7350; padding: clamp(64px,9vw,100px) clamp(20px,4vw,48px); text-align: center;">
+    <h2 style="font-size: clamp(1.8rem,3.6vw,2.6rem); font-weight: 800; color: #FFFFFF; margin: 0 0 14px; letter-spacing: -0.02em;">지금 무료로 시작하세요</h2>
+    <p style="font-size: 17px; color: rgba(255,255,255,0.88); margin: 0 0 36px;">혼자 고민하지 마세요. 헬린이 상담소가 함께합니다.</p>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
+      <a href="https://apps.apple.com/app/id6789938987" style="text-decoration: none; display: inline-flex; align-items: center; gap: 12px; background: #101613; color: #FFFFFF; padding: 16px 30px; border-radius: 16px; transition: transform 160ms cubic-bezier(0.23,1,0.32,1);" style-hover="transform: scale(1.04);" style-active="transform: scale(0.97);">
+        <svg width="24" height="28" viewBox="0 0 384 512" fill="#FFFFFF"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span style="text-align: left; line-height: 1.2;"><span style="display: block; font-size: 11px; opacity: 0.85;">Download on the</span><span style="display: block; font-size: 19px; font-weight: 700;">App Store</span></span>
+      </a>
+      <sc-if value="{{ showQrCode }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <image-slot id="qr-code" shape="rounded" radius="16" placeholder="QR 코드 자리" style="width: 108px; height: 108px; background: #FFFFFF;"></image-slot>
+        <span style="font-size: 13px; color: rgba(255,255,255,0.8);">QR 코드로 바로 설치</span>
+      </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="padding: 36px clamp(20px,4vw,48px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid rgba(14,115,80,0.1);">
+    <span style="font-size: 13px; color: #6B7973;">© 2026 헬린이 상담소</span>
+    <div style="display: flex; gap: 20px;">
+      <a href="./privacy.html" style="font-size: 13px; color: #4B5A54; text-decoration: none;" style-hover="color: #0E7350;">개인정보처리방침</a>
+      <a href="./delete-account.html" style="font-size: 13px; color: #4B5A54; text-decoration: none;" style-hover="color: #0E7350;">계정 삭제 안내</a>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;galleryLayout&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;scroll&quot;, &quot;options&quot;: [&quot;scroll&quot;, &quot;grid&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;스크린샷 갤러리&quot;},
+  &quot;showQrCode&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;다운로드 섹션&quot;},
+  &quot;showProblemsSection&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;문제 제기 섹션&quot;}
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const gallery = this.props.galleryLayout ?? 'scroll';
+    return {
+      showProblems: this.props.showProblemsSection ?? true,
+      showQrCode: this.props.showQrCode ?? true,
+      isScrollGallery: gallery !== 'grid',
+      isGridGallery: gallery === 'grid',
+    };
+  }
+}
+</script>
+</body>
+</html>
