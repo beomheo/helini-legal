@@ -1,192 +1,253 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>헬린이 상담소 | 운동 초보를 위한 AI 헬스 상담</title>
+  <meta name="description" content="운동을 시작한 당신의 질문부터. AI 코치와 커뮤니티가 함께하는 헬린이 상담소.">
+  <script src="./support.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
   <script src="./image-slot.js"></script>
   <style>
+    :root { --ink: #14261f; --muted: #63736c; --green: #087b57; --deep: #083d2f; --mint: #e7f3ed; --paper: #f5f7f3; --line: #dce7df; --warm: #fff6dd; }
     * { box-sizing: border-box; }
-    body { margin: 0; -webkit-font-smoothing: antialiased; }
-    ::-webkit-scrollbar { display: none; }
-    @keyframes hlFadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .shell { overflow: hidden; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid rgba(20, 38, 31, .09); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 17px; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: var(--green); color: white; }
+    .brand-mark svg { width: 19px; height: 19px; }
+    .nav-link { color: var(--green); font-size: 14px; font-weight: 750; text-decoration: none; }
+    .hero { min-height: 650px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 430px); align-items: end; gap: clamp(40px, 7vw, 112px); padding: 68px 0 0; }
+    .eyebrow { color: var(--green); margin: 0 0 18px; font-size: 14px; font-weight: 800; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 12ch; margin-bottom: 24px; font-size: clamp(42px, 5vw, 68px); line-height: 1.12; letter-spacing: 0; font-weight: 820; }
+    .hero-copy { max-width: 35ch; margin-bottom: 34px; color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .hero-notes { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: 14px; font-weight: 650; }
+    .hero-notes span { display: inline-flex; align-items: center; gap: 7px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #e0a00b; }
+    .phone-hero { align-self: end; justify-self: center; width: min(100%, 370px); padding: 11px; border: 7px solid #12201a; border-bottom: 0; border-radius: 42px 42px 0 0; background: #12201a; box-shadow: 0 28px 50px rgba(8, 61, 47, .18); }
+    .phone-hero image-slot { display: block; height: auto; aspect-ratio: 1242 / 2688; overflow: hidden; border-radius: 27px 27px 0 0; background: #eef3ef; }
+    .problem-band { background: var(--deep); color: white; }
+    .problems { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(36px, 7vw, 104px); padding: 92px 0; align-items: center; }
+    .section-label { margin: 0 0 16px; color: #96d8bf; font-size: 14px; font-weight: 800; }
+    h2 { margin-bottom: 18px; font-size: clamp(31px, 3.6vw, 48px); line-height: 1.18; letter-spacing: 0; font-weight: 820; }
+    .problems p { margin: 0; color: rgba(255,255,255,.7); font-size: 17px; line-height: 1.65; }
+    .question-list { border-top: 1px solid rgba(255,255,255,.22); }
+    .question-list div { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.22); font-size: clamp(18px, 2vw, 24px); font-weight: 680; }
+    .question-list div:last-child { color: #a6e3cb; }
+    .feature { padding: 108px 0; }
+    .feature-top { display: grid; grid-template-columns: 1fr minmax(220px, .65fr); gap: 26px; margin-bottom: 46px; align-items: end; }
+    .feature-top p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .showcase { display: grid; grid-template-columns: 1.08fr .92fr; gap: 28px; align-items: center; }
+    .screen-frame { overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 18px 36px rgba(20, 38, 31, .08); }
+    .screen-frame image-slot { display: block; width: 100%; background: #eef3ef; }
+    .ai-screen { width: min(100%, 332px); justify-self: center; }
+    .ai-screen image-slot { height: auto; aspect-ratio: 1242 / 2688; }
+    .screen-copy { padding: 10px 0; }
+    .screen-copy .number { display: inline-block; margin-bottom: 18px; color: var(--green); font-size: 14px; font-weight: 800; }
+    .screen-copy h3 { margin-bottom: 14px; font-size: clamp(28px, 3vw, 38px); line-height: 1.22; letter-spacing: 0; }
+    .screen-copy p { max-width: 33ch; margin-bottom: 28px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .feature-points { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .feature-points li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.45; font-weight: 650; }
+    .feature-points b { color: var(--green); }
+    .details { background: #eaf4ee; padding: 108px 0; }
+    .detail-grid { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(40px, 8vw, 120px); align-items: center; }
+    .detail-copy p { max-width: 34ch; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .detail-screen { width: min(100%, 344px); justify-self: center; }
+    .detail-screen image-slot { height: auto; aspect-ratio: 1242 / 2688; }
+    .proof { padding: 108px 0; }
+    .proof-heading { max-width: 560px; margin-bottom: 44px; }
+    .proof-heading p { color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .proof-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; align-items: stretch; }
+    .proof-card { display: grid; grid-template-columns: minmax(150px, .72fr) 1fr; gap: 26px; align-items: center; padding: 28px; border-top: 2px solid var(--green); background: white; }
+    .proof-card:nth-child(2) { border-top-color: #d4a001; background: var(--warm); }
+    .proof-card image-slot { display: block; height: auto; aspect-ratio: 1242 / 2688; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #eef3ef; }
+    .proof-card h3 { margin-bottom: 12px; font-size: 24px; line-height: 1.3; }
+    .proof-card p { margin-bottom: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .gallery { padding: 108px 0; background: #10271f; color: white; }
+    .gallery .section-label { color: #96d8bf; }
+    .gallery-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 40px; }
+    .gallery-head h2 { margin-bottom: 0; }
+    .gallery-head p { max-width: 31ch; margin: 0; color: rgba(255,255,255,.66); font-size: 15px; line-height: 1.65; }
+    .gallery-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+    .gallery-item { min-width: 0; }
+    .gallery-item image-slot { display: block; height: auto; aspect-ratio: 1242 / 2688; border: 5px solid #263c34; border-radius: 20px; overflow: hidden; background: #eef3ef; }
+    .gallery-item span { display: block; padding: 12px 4px 0; color: rgba(255,255,255,.82); font-size: 14px; font-weight: 700; }
+    .download { padding: 108px 0; text-align: center; }
+    .download h2 { max-width: 14ch; margin: 0 auto 16px; }
+    .download p { max-width: 38ch; margin: 0 auto 30px; color: var(--muted); font-size: 16px; line-height: 1.65; }
+    .store-button { display: inline-flex; align-items: center; gap: 11px; padding: 14px 22px; border-radius: 8px; background: #101613; color: white; text-decoration: none; transition: transform 160ms ease-out, background 160ms ease-out; }
+    .store-button:hover { background: #20352c; transform: translateY(-2px); }
+    .store-button:active { transform: translateY(0) scale(.98); }
+    .store-button svg { width: 20px; height: 24px; fill: currentColor; }
+    .store-button small, .store-button strong { display: block; text-align: left; line-height: 1.1; }
+    .store-button small { font-size: 10px; opacity: .82; }
+    .store-button strong { margin-top: 2px; font-size: 17px; }
+    footer { border-top: 1px solid var(--line); }
+    .footer { min-height: 88px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; color: var(--muted); font-size: 13px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: var(--green); }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, 560px); }
+      .nav { height: 64px; }
+      .hero { min-height: unset; grid-template-columns: 1fr; gap: 42px; padding: 56px 0 0; }
+      h1 { font-size: clamp(40px, 12vw, 56px); }
+      .hero-copy { font-size: 16px; }
+      .phone-hero { width: min(90%, 350px); }
+      .problems, .showcase, .detail-grid, .proof-grid { grid-template-columns: 1fr; }
+      .problems, .feature, .details, .proof, .gallery, .download { padding: 74px 0; }
+      .feature-top { grid-template-columns: 1fr; margin-bottom: 34px; }
+      .showcase .ai-screen { order: 2; }
+      .screen-copy { order: 1; }
+      .detail-screen { order: 2; }
+      .gallery-head { display: block; }
+      .gallery-head p { margin-top: 12px; }
+      .gallery-row { display: flex; overflow-x: auto; width: calc(100% + 32px); margin-left: -16px; padding: 0 16px 8px; scroll-snap-type: x mandatory; }
+      .gallery-item { flex: 0 0 168px; scroll-snap-align: start; }
+      .proof-card { grid-template-columns: 132px 1fr; gap: 18px; padding: 20px; }
+      .proof-card h3 { font-size: 21px; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
+    @media (max-width: 420px) {
+      .proof-card { grid-template-columns: 112px 1fr; gap: 14px; padding: 16px; }
+      .proof-card p { font-size: 14px; }
     }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
   </style>
-</helmet>
-
-<div style="font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', sans-serif; background: #F4F6F1; color: #14261F; min-height: 100dvh; overflow-x: hidden;">
-
-  <!-- NAV -->
-  <div style="position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px,4vw,48px); background: rgba(244,246,241,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(14,115,80,0.08);">
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <div style="width: 34px; height: 34px; border-radius: 10px; background: #0E7350; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-        <svg width="18" height="16" viewBox="0 0 24 22" fill="none"><path d="M2 4C2 2.34 3.34 1 5 1H19C20.66 1 22 2.34 22 4V13C22 14.66 20.66 16 19 16H9L4 20.5V16H5C3.34 16 2 14.66 2 13V4Z" fill="#FFFFFF"/></svg>
-      </div>
-      <span style="font-size: 17px; font-weight: 800; letter-spacing: -0.02em;">헬린이 상담소</span>
-    </div>
-    <a href="#download" style="text-decoration: none; background: #0E7350; color: #FFFFFF; font-size: 14px; font-weight: 700; padding: 10px 20px; border-radius: 999px; transition: transform 160ms cubic-bezier(0.23,1,0.32,1);" style-hover="transform: scale(1.04);" style-active="transform: scale(0.97);">다운로드</a>
-  </div>
-
-  <!-- HERO -->
-  <div style="max-width: 1200px; margin: 0 auto; padding: clamp(40px,7vw,88px) clamp(20px,4vw,48px) clamp(48px,6vw,72px); display: flex; align-items: center; gap: clamp(32px,5vw,64px); flex-wrap: wrap;">
-    <div style="flex: 1 1 420px; animation: hlFadeUp 700ms cubic-bezier(0.23,1,0.32,1) both;">
-      <h1 style="font-size: clamp(2.1rem,4.6vw,3.1rem); line-height: 1.32; letter-spacing: -0.02em; font-weight: 800; margin: 0 0 18px; text-wrap: pretty; color: #0F2A20;">혼자 운동하다<br>막막했던 적 있나요?</h1>
-      <p style="font-size: clamp(1.05rem,1.8vw,1.3rem); font-weight: 700; color: #0E7350; margin: 0 0 14px;">헬린이를 위한 AI 헬스 상담소</p>
-      <p style="font-size: 16px; line-height: 1.7; color: #4B5A54; margin: 0 0 32px; max-width: 46ch;">궁금한 순간 바로 물어보세요. AI 코치와 선배 헬린이들이 답해드립니다.</p>
-      <a href="#download" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px; background: #101613; color: #FFFFFF; padding: 14px 24px; border-radius: 14px; transition: transform 160ms cubic-bezier(0.23,1,0.32,1);" style-hover="transform: scale(1.03);" style-active="transform: scale(0.97);">
-        <svg width="20" height="24" viewBox="0 0 384 512" fill="#FFFFFF"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-        <span style="text-align: left; line-height: 1.2;"><span style="display: block; font-size: 10px; opacity: 0.85;">Download on the</span><span style="display: block; font-size: 17px; font-weight: 700;">App Store</span></span>
+</head>
+<body>
+  <div class="shell">
+    <header class="container nav">
+      <a class="brand" href="#top" aria-label="헬린이 상담소 홈">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 4.7A3.7 3.7 0 0 1 6.7 1h10.6A3.7 3.7 0 0 1 21 4.7v8.6a3.7 3.7 0 0 1-3.7 3.7H10l-4.6 3.8V17a3.7 3.7 0 0 1-2.4-3.5V4.7Zm5.1 5.1a1 1 0 1 0 0 2h7.8a1 1 0 1 0 0-2H8.1Z"/></svg></span>
+        <span>헬린이 상담소</span>
       </a>
-    </div>
-    <div style="flex: 1 1 300px; display: flex; justify-content: center; animation: hlFadeUp 700ms cubic-bezier(0.23,1,0.32,1) 120ms both;">
-      <div style="width: 260px; background: #101613; border-radius: 44px; padding: 14px; box-shadow: 0 30px 60px -20px rgba(14,42,32,0.35);">
-        <div style="position: relative; background: #E8F3ED; border-radius: 32px; overflow: hidden; aspect-ratio: 9/19.5;">
-          <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 80px; height: 18px; background: #101613; border-radius: 10px; z-index: 2;"></div>
-          <image-slot id="hero-screenshot" src="./screenshots/1-home.png" shape="rect" placeholder="홈 화면 스크린샷" style="width: 100%; height: 100%;"></image-slot>
+      <a class="nav-link" href="#download">출시 소식</a>
+    </header>
+
+    <main id="top">
+      <section class="container hero">
+        <div>
+          <p class="eyebrow">BEGINNER FITNESS COMPANION</p>
+          <h1>운동은 혼자여도<br>질문은 혼자가 아니어야 해요.</h1>
+          <p class="hero-copy">오늘의 루틴부터 자세 고민까지. 운동 기록을 바탕으로 AI 코치와 커뮤니티가 다음 한 걸음을 함께 정리해드려요.</p>
+          <div class="hero-notes"><span><i class="dot"></i> iOS 출시 준비 중</span><span>무료로 시작</span></div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEMS -->
-  <sc-if value="{{ showProblems }}" hint-placeholder-val="{{ true }}">
-  <div style="background: #E8F3ED;">
-    <div style="max-width: 760px; margin: 0 auto; padding: clamp(56px,8vw,88px) clamp(20px,4vw,48px);">
-      <h2 style="font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; text-align: center; margin: 0 0 40px; letter-spacing: -0.02em; color: #0F2A20;">이런 고민, 익숙하신가요?</h2>
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 20px 4px; font-size: 16px; font-weight: 600; color: #24352D; box-shadow: 0 4px 16px -8px rgba(14,42,32,0.12);">오늘 무슨 운동을 해야 할지 모르겠어요</div>
-        <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 20px 4px; font-size: 16px; font-weight: 600; color: #24352D; box-shadow: 0 4px 16px -8px rgba(14,42,32,0.12);">이 자세가 맞는지 봐줄 사람이 없어요</div>
-        <div style="align-self: flex-start; max-width: 82%; background: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 20px 4px; font-size: 16px; font-weight: 600; color: #24352D; box-shadow: 0 4px 16px -8px rgba(14,42,32,0.12);">PT는 비싸고 부담스러워요</div>
-        <div style="align-self: flex-end; max-width: 82%; background: #0E7350; color: #FFFFFF; padding: 16px 20px; border-radius: 20px 20px 4px 20px; font-size: 16px; font-weight: 700; margin-top: 8px;">헬린이 상담소가 답해드릴게요</div>
-      </div>
-    </div>
-  </div>
-  </sc-if>
-
-  <!-- FEATURES -->
-  <div style="max-width: 1200px; margin: 0 auto; padding: clamp(56px,8vw,96px) clamp(20px,4vw,48px);">
-    <h2 style="font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; text-align: center; margin: 0 0 44px; letter-spacing: -0.02em; color: #0F2A20;">헬린이 상담소가 도와드려요</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-      <div style="background: #FFFFFF; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(14,115,80,0.08);">
-        <div style="width: 48px; height: 48px; border-radius: 14px; background: #E8F3ED; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7350" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="4"/><circle cx="8.5" cy="12.5" r="1.4" fill="#0E7350" stroke="none"/><circle cx="15.5" cy="12.5" r="1.4" fill="#0E7350" stroke="none"/><path d="M12 6V3"/><circle cx="12" cy="2" r="1" fill="#0E7350" stroke="none"/></svg>
+        <div class="phone-hero">
+          <image-slot id="hero-screenshot" src="./screenshots/1-home.png" shape="rect" placeholder="헬린이 상담소 홈 화면"></image-slot>
         </div>
-        <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 8px; color: #0F2A20;">AI 코치</h3>
-        <p style="font-size: 15px; line-height: 1.7; color: #4B5A54; margin: 0;">24시간 언제든, 운동 질문에 바로 답해드려요.</p>
-      </div>
-      <div style="background: #FFFFFF; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(14,115,80,0.08);">
-        <div style="width: 48px; height: 48px; border-radius: 14px; background: #E8F3ED; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7350" stroke-width="1.8"><path d="M3 8C3 6.34 4.34 5 6 5H14C15.66 5 17 6.34 17 8V11C17 12.66 15.66 14 14 14H8L4.5 17V14H6C4.34 14 3 12.66 3 11V8Z"/><path d="M13 16.5C13 17.6 13.9 18.5 15 18.5H16.5L19.5 21V18.5H20C21.1 18.5 22 17.6 22 16.5V13.5C22 12.4 21.1 11.5 20 11.5H15" stroke-width="1.6"/></svg>
+      </section>
+
+      <section class="problem-band">
+        <div class="container problems">
+          <div>
+            <p class="section-label">운동을 시작한 당신에게</p>
+            <h2>막막한 순간은<br>질문으로 바꿔도 돼요.</h2>
+            <p>처음이라서 모르는 건 당연해요. 헬린이 상담소는 고민을 쌓아두지 않고, 작은 질문부터 꺼낼 수 있는 공간입니다.</p>
+          </div>
+          <div class="question-list" aria-label="운동 초보의 고민">
+            <div>"오늘 무슨 운동부터 해야 할까요?"</div>
+            <div>"스쿼트할 때 무릎이 안쪽으로 들어가요."</div>
+            <div>"운동 후 단백질은 꼭 바로 먹어야 하나요?"</div>
+            <div>이제, 혼자 검색하지 말고 물어보세요.</div>
+          </div>
         </div>
-        <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 8px; color: #0F2A20;">커뮤니티 Q&A</h3>
-        <p style="font-size: 15px; line-height: 1.7; color: #4B5A54; margin: 0;">멘토와 다른 헬린이들의 실전 경험을 들어보세요.</p>
-      </div>
-      <div style="background: #FFFFFF; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(14,115,80,0.08);">
-        <div style="width: 48px; height: 48px; border-radius: 14px; background: #E8F3ED; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0E7350" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9H21"/><path d="M8 2V6"/><path d="M16 2V6"/><path d="M7.5 13.5L10 16L16 10.5" stroke-width="2"/></svg>
+      </section>
+
+      <section class="container feature">
+        <div class="feature-top">
+          <div>
+            <p class="eyebrow">AI COACH</p>
+            <h2>지금 필요한 답을<br>가볍게 물어보세요.</h2>
+          </div>
+          <p>기록한 운동과 이어지는 질문이라 더 맥락 있게 답해요. 어려운 말보다, 바로 해볼 수 있는 다음 동작을 우선합니다.</p>
         </div>
-        <h3 style="font-size: 18px; font-weight: 800; margin: 0 0 8px; color: #0F2A20;">운동 기록</h3>
-        <p style="font-size: 15px; line-height: 1.7; color: #4B5A54; margin: 0;">매일 기록하고 나의 성장 과정을 확인하세요.</p>
-      </div>
-    </div>
+        <div class="showcase">
+          <div class="ai-screen screen-frame">
+            <image-slot id="ai-coach-feature" src="./screenshots/5-ai-coach.png" shape="rect" placeholder="AI 코치 대화 화면"></image-slot>
+          </div>
+          <div class="screen-copy">
+            <span class="number">01 / AI COACH</span>
+            <h3>질문 하나에서<br>오늘의 루틴까지</h3>
+            <p>주 3회 루틴처럼 막연한 시작도, 등 운동의 순서처럼 구체적인 다음 질문도 이어서 물어볼 수 있어요.</p>
+            <ul class="feature-points">
+              <li><b>01</b><span>운동 기록을 바탕으로 답변</span></li>
+              <li><b>02</b><span>하루 3회까지 부담 없이 질문</span></li>
+              <li><b>03</b><span>공식 가이드 참고 출처 확인</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="details">
+        <div class="container detail-grid">
+          <div class="detail-copy">
+            <p class="eyebrow">COMMUNITY Q&amp;A</p>
+            <h2>검색 결과보다 먼저,<br>사람에게 물어보세요.</h2>
+            <p>자세, 통증과 불편감, 식단, 루틴. 같은 고민을 먼저 지나온 헬린이와 멘토의 답변을 한곳에서 확인할 수 있어요.</p>
+            <p>의료 진단이 필요한 신호는 분명하게 안내하고, 답변의 참고 출처도 함께 보여줍니다.</p>
+          </div>
+          <div class="detail-screen screen-frame">
+            <image-slot id="question-detail-feature" src="./screenshots/3-question-detail.png" shape="rect" placeholder="질문 상세와 답변 화면"></image-slot>
+          </div>
+        </div>
+      </section>
+
+      <section class="container proof">
+        <div class="proof-heading">
+          <p class="eyebrow">QUESTION, ANSWER, RECORD</p>
+          <h2>물어본 뒤에는<br>내 리듬으로 이어가요.</h2>
+          <p>커뮤니티에서 질문을 발견하고, 답변을 확인하고, 오늘의 운동을 기록하는 흐름을 한 앱 안에 담았습니다.</p>
+        </div>
+        <div class="proof-grid">
+          <article class="proof-card">
+            <image-slot id="community-feature" src="./screenshots/2-community.png" shape="rect" placeholder="커뮤니티 질문 목록"></image-slot>
+            <div><p class="eyebrow">COMMUNITY</p><h3>내 고민과 닮은 질문을 찾아보세요.</h3><p>카테고리별로 살펴보고, 답변을 읽고, 필요할 때는 직접 질문을 올릴 수 있어요.</p></div>
+          </article>
+          <article class="proof-card">
+            <image-slot id="growth-feature" src="./screenshots/4-growth.png" shape="rect" placeholder="성장 기록 화면"></image-slot>
+            <div><p class="eyebrow" style="color:#9a7100">GROWTH LOG</p><h3>작은 기록이 다음 운동의 힌트가 돼요.</h3><p>운동한 날과 최근 기록을 한눈에 보고, AI 코치에게 이어서 물어볼 수 있어요.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery">
+        <div class="container">
+          <div class="gallery-head">
+            <div><p class="section-label">IN THE APP</p><h2>지금의 헬린이 상담소</h2></div>
+            <p>실제 앱 화면으로 질문부터 기록까지의 흐름을 미리 확인해보세요.</p>
+          </div>
+          <div class="gallery-row">
+            <div class="gallery-item"><image-slot id="gallery-1" src="./screenshots/1-home.png" shape="rect" placeholder="홈 화면"></image-slot><span>홈</span></div>
+            <div class="gallery-item"><image-slot id="gallery-2" src="./screenshots/5-ai-coach.png" shape="rect" placeholder="AI 코치 채팅"></image-slot><span>AI 코치</span></div>
+            <div class="gallery-item"><image-slot id="gallery-3" src="./screenshots/2-community.png" shape="rect" placeholder="커뮤니티 Q&A"></image-slot><span>커뮤니티</span></div>
+            <div class="gallery-item"><image-slot id="gallery-4" src="./screenshots/4-growth.png" shape="rect" placeholder="운동 기록"></image-slot><span>성장 기록</span></div>
+          </div>
+          <div hidden>
+            <image-slot id="gallery-1b" src="./screenshots/1-home.png" shape="rect"></image-slot>
+            <image-slot id="gallery-2b" src="./screenshots/5-ai-coach.png" shape="rect"></image-slot>
+            <image-slot id="gallery-3b" src="./screenshots/2-community.png" shape="rect"></image-slot>
+            <image-slot id="gallery-4b" src="./screenshots/4-growth.png" shape="rect"></image-slot>
+          </div>
+        </div>
+      </section>
+
+      <section class="container download" id="download">
+        <p class="eyebrow">COMING SOON ON IOS</p>
+        <h2>운동을 시작한 당신의 질문부터.</h2>
+        <p>헬린이 상담소는 iOS 출시를 준비하고 있어요. 앱이 출시되면 App Store에서 바로 만나볼 수 있습니다.</p>
+        <a class="store-button" href="https://apps.apple.com/app/id6789938987" aria-label="App Store에서 헬린이 상담소 보기">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9Zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"/></svg>
+          <span><small>출시 후</small><strong>App Store에서 보기</strong></span>
+        </a>
+      </section>
+    </main>
+
+    <footer><div class="container footer"><span>© 2026 헬린이 상담소</span><div class="footer-links"><a href="./privacy.html">개인정보처리방침</a><a href="./delete-account.html">계정 삭제 안내</a></div></div></footer>
   </div>
-
-  <!-- SCREENSHOT GALLERY -->
-  <div style="background: #0F2A20; padding: clamp(56px,8vw,88px) 0;">
-    <h2 style="font-size: clamp(1.5rem,3vw,2rem); font-weight: 800; text-align: center; margin: 0 0 40px; letter-spacing: -0.02em; color: #FFFFFF;">앱을 미리 만나보세요</h2>
-
-    <sc-if value="{{ isScrollGallery }}" hint-placeholder-val="{{ true }}">
-    <div style="display: flex; gap: 20px; overflow-x: auto; padding: 4px clamp(20px,4vw,48px) 12px; scroll-snap-type: x mandatory;">
-      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-1" src="./screenshots/1-home.png" shape="rect" placeholder="홈 화면" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-2" src="./screenshots/5-ai-coach.png" shape="rect" placeholder="AI 코치 채팅" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-3" src="./screenshots/2-community.png" shape="rect" placeholder="커뮤니티 Q&amp;A" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-      <div style="flex: 0 0 200px; scroll-snap-align: center; background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-4" src="./screenshots/4-growth.png" shape="rect" placeholder="운동 기록" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-    </div>
-    </sc-if>
-
-    <sc-if value="{{ isGridGallery }}" hint-placeholder-val="{{ false }}">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,48px); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
-      <div style="background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-1b" src="./screenshots/1-home.png" shape="rect" placeholder="홈 화면" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-      <div style="background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-2b" src="./screenshots/5-ai-coach.png" shape="rect" placeholder="AI 코치 채팅" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-      <div style="background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-3b" src="./screenshots/2-community.png" shape="rect" placeholder="커뮤니티 Q&amp;A" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-      <div style="background: #101613; border-radius: 36px; padding: 12px;">
-        <div style="position: relative; background: #E8F3ED; border-radius: 26px; overflow: hidden; aspect-ratio: 9/19.5;"><image-slot id="gallery-4b" src="./screenshots/4-growth.png" shape="rect" placeholder="운동 기록" style="width: 100%; height: 100%;"></image-slot></div>
-      </div>
-    </div>
-    </sc-if>
-  </div>
-
-  <!-- CTA -->
-  <div id="download" style="background: #0E7350; padding: clamp(64px,9vw,100px) clamp(20px,4vw,48px); text-align: center;">
-    <h2 style="font-size: clamp(1.8rem,3.6vw,2.6rem); font-weight: 800; color: #FFFFFF; margin: 0 0 14px; letter-spacing: -0.02em;">지금 무료로 시작하세요</h2>
-    <p style="font-size: 17px; color: rgba(255,255,255,0.88); margin: 0 0 36px;">혼자 고민하지 마세요. 헬린이 상담소가 함께합니다.</p>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;">
-      <a href="https://apps.apple.com/app/id6789938987" style="text-decoration: none; display: inline-flex; align-items: center; gap: 12px; background: #101613; color: #FFFFFF; padding: 16px 30px; border-radius: 16px; transition: transform 160ms cubic-bezier(0.23,1,0.32,1);" style-hover="transform: scale(1.04);" style-active="transform: scale(0.97);">
-        <svg width="24" height="28" viewBox="0 0 384 512" fill="#FFFFFF"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-        <span style="text-align: left; line-height: 1.2;"><span style="display: block; font-size: 11px; opacity: 0.85;">Download on the</span><span style="display: block; font-size: 19px; font-weight: 700;">App Store</span></span>
-      </a>
-      <sc-if value="{{ showQrCode }}" hint-placeholder-val="{{ true }}">
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <image-slot id="qr-code" shape="rounded" radius="16" placeholder="QR 코드 자리" style="width: 108px; height: 108px; background: #FFFFFF;"></image-slot>
-        <span style="font-size: 13px; color: rgba(255,255,255,0.8);">QR 코드로 바로 설치</span>
-      </div>
-      </sc-if>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div style="padding: 36px clamp(20px,4vw,48px); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid rgba(14,115,80,0.1);">
-    <span style="font-size: 13px; color: #6B7973;">© 2026 헬린이 상담소</span>
-    <div style="display: flex; gap: 20px;">
-      <a href="./privacy.html" style="font-size: 13px; color: #4B5A54; text-decoration: none;" style-hover="color: #0E7350;">개인정보처리방침</a>
-      <a href="./delete-account.html" style="font-size: 13px; color: #4B5A54; text-decoration: none;" style-hover="color: #0E7350;">계정 삭제 안내</a>
-    </div>
-  </div>
-
-</div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;galleryLayout&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;scroll&quot;, &quot;options&quot;: [&quot;scroll&quot;, &quot;grid&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;스크린샷 갤러리&quot;},
-  &quot;showQrCode&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;다운로드 섹션&quot;},
-  &quot;showProblemsSection&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;문제 제기 섹션&quot;}
-}">
-class Component extends DCLogic {
-  renderVals() {
-    const gallery = this.props.galleryLayout ?? 'scroll';
-    return {
-      showProblems: this.props.showProblemsSection ?? true,
-      showQrCode: this.props.showQrCode ?? true,
-      isScrollGallery: gallery !== 'grid',
-      isGridGallery: gallery === 'grid',
-    };
-  }
-}
-</script>
 </body>
 </html>
