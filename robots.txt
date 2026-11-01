@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://helini-consult.com/sitemap.xml
